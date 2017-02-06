@@ -14,6 +14,9 @@ RUN sed -i -e 's/\r$//' /run-mysql.sh
 RUN sed -i -e 's/\r$//' /etc/supervisord.conf
 RUN /config_mysql.sh
 
+ADD mysql.initial.sql /mysql.initial.sql
+RUN mysql testdb < /mysql.initial.sql
+
 EXPOSE 3306
 
 CMD ["/bin/bash", "/run-mysql.sh"]
