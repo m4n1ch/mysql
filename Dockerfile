@@ -4,8 +4,8 @@ RUN yum -y install epel-release
 RUN yum -y install mysql-server mysql pwgen supervisor bash-completion psmisc net-tools
 
 ADD ./run-mysql.sh /run-mysql.sh
-ADDconfig_mysql.sh /config_mysql.sh
-ADDsupervisord.conf /etc/supervisord.conf
+ADD ./config_mysql.sh /config_mysql.sh
+ADD ./supervisord.conf /etc/supervisord.conf
 
 RUN chmod 755 /run-mysql.sh
 RUN chmod 755 /config_mysql.sh
