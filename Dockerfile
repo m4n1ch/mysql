@@ -7,6 +7,8 @@ ADD ./run-mysql.sh /run-mysql.sh
 ADD ./config_mysql.sh /config_mysql.sh
 ADD ./supervisord.conf /etc/supervisord.conf
 
+ADD ./mysql.initial.sql /mysql.initial.sql
+
 RUN chmod 755 /run-mysql.sh
 RUN chmod 755 /config_mysql.sh
 RUN sed -i -e 's/\r$//' /config_mysql.sh
@@ -14,10 +16,6 @@ RUN sed -i -e 's/\r$//' /run-mysql.sh
 RUN sed -i -e 's/\r$//' /etc/supervisord.conf
 RUN /config_mysql.sh
 
-ADD ./mysql.initial.sql /mysql.initial.sql
-
 EXPOSE 3306
-
-RUN mysql testdb < /mysql.initial.sql
 
 CMD ["/bin/bash", "/run-mysql.sh"]
