@@ -20,7 +20,6 @@ mysql -uroot -pmysqlPassword -e "GRANT ALL PRIVILEGES ON testdb.* TO 'testdb'@'l
 mysql -uroot -pmysqlPassword -e "GRANT ALL PRIVILEGES ON *.* TO 'testdb'@'%' IDENTIFIED BY 'mysqlPassword' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 mysql -uroot -pmysqlPassword -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'mysqlPassword' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 mysql -uroot -pmysqlPassword -e "select user, host FROM mysql.user;"
-mysql -uroot -pmysqlPassword testdb < /mysql.initial.sql
 killall mysqld
 sleep 10
 }
@@ -28,3 +27,4 @@ sleep 10
 # Call all functions
 __mysql_config
 __start_mysql
+
